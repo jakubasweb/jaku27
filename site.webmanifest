@@ -1,0 +1,13 @@
+{
+  "name": "Jaku – Dekoracje balonowe",
+  "short_name": "Jaku",
+  "description": "Dekoracje z balonów na chrzciny, komunie, urodziny i inne okazje. Tarnobrzeg i okolice.",
+  "lang": "pl",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#5b3d9e",
+  "icons": [
+    { "src": "img/web/logo-192.png", "sizes": "192x192", "type": "image/png" }
+  ]
+}
