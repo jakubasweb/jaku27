@@ -13,6 +13,14 @@ const MAX_FILE   = 8 * 1024 * 1024; // 8 MB (formularz zmniejsza zdjęcia automa
 const MIN_SECS   = 3;               // minimalny czas wypełniania (ochrona przed botami)
 const COOLDOWN   = 30;              // odstęp między wysyłkami z jednego adresu IP (s)
 
+/**
+ * TRYB TESTOWY: zamiast wysyłać e-mail, zapisuje wiadomość do folderu _outbox/ (plik .eml, .txt i załączone zdjęcie).
+ *  null  = automatycznie: włączony tylko gdy strona działa na localhost / 127.0.0.1 (na serwerze wysyła prawdziwy mail)
+ *  true  = zawsze zapisuj do pliku, false = zawsze wysyłaj mail
+ */
+const SAVE_TO_FILE = null;
+const OUTBOX_DIR   = __DIR__ . '/_outbox';
+
 date_default_timezone_set('Europe/Warsaw');
 mb_internal_encoding('UTF-8');
 
@@ -177,7 +185,33 @@ if ($attachment) {
     $message = chunk_split(base64_encode($body));
 }
 
-$sent = mail(MAIL_TO, '=?UTF-8?B?' . base64_encode($subject) . '?=', $message, implode("\r\n", $headers));
+$encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
+
+$hostHeader = strtolower($hostOnly);
+$isLocal = in_array($hostHeader, ['localhost', '127.0.0.1', '[::1]', '::1'], true);
+$saveToFile = SAVE_TO_FILE ?? $isLocal;
+
+if ($saveToFile) {
+    if (!is_dir(OUTBOX_DIR) && !@mkdir(OUTBOX_DIR, 0755, true)) {
+        respond(false, 'Tryb testowy: nie można utworzyć folderu _outbox.', 500);
+    }
+    // Folder z testowymi wiadomościami nie może być dostępny z internetu
+    @file_put_contents(OUTBOX_DIR . '/.htaccess', "Require all denied\n");
+
+    $base = OUTBOX_DIR . '/' . date('Y-m-d_H-i-s') . '_' . bin2hex(random_bytes(2));
+    $eml = 'To: ' . MAIL_TO . "\r\nSubject: " . $encodedSubject . "\r\n" . implode("\r\n", $headers) . "\r\n\r\n" . $message;
+    $ok = @file_put_contents($base . '.eml', $eml) !== false
+        && @file_put_contents($base . '.txt', $body) !== false;
+    if ($ok && $attachment) {
+        $ok = @file_put_contents($base . '_' . $attachment['name'], $attachment['data']) !== false;
+    }
+    if (!$ok) {
+        respond(false, 'Tryb testowy: nie udało się zapisać wiadomości do _outbox.', 500);
+    }
+    respond(true, 'Tryb testowy: wiadomość zapisana w folderze _outbox.');
+}
+
+$sent = mail(MAIL_TO, $encodedSubject, $message, implode("\r\n", $headers));
 
 if (!$sent) {
     respond(false, 'Nie udało się wysłać wiadomości. Spróbuj ponownie lub zadzwoń: 667 285 016.', 500);

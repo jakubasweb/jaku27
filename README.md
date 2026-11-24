@@ -23,6 +23,16 @@ css/  js/  fonts/  img/icons.svg  img/web/
 7. **Statystyki / marketing** – strona nie używa zewnętrznych skryptów. Jeśli dodasz np. Google Analytics, wstaw go jako `<script type="text/plain" data-consent="analytics" src="…"></script>` (uruchomi się dopiero po zgodzie z banera) i dopisz domeny do nagłówka `Content-Security-Policy` w `.htaccess`.
 8. **Social media** – w stopce nie ma linków do Facebooka/Instagrama; dodaj je, gdy będą gotowe.
 
+## Test formularza lokalnie (bez wysyłania maili)
+
+Potrzebny PHP (`winget install PHP.PHP.8.3`) z rozszerzeniami `mbstring` i `fileinfo`. W katalogu strony uruchom (w jednej linii, PowerShell):
+
+```
+php -d extension_dir="$((Split-Path (Get-Command php).Source))\ext" -d extension=mbstring -d extension=fileinfo -S localhost:8000
+```
+
+Otwórz `http://localhost:8000` i wyślij formularz. Na `localhost` `send.php` nie wysyła maila, tylko zapisuje wiadomość w folderze `_outbox/`: plik `.eml` (otwiera się w Outlooku/Thunderbirdzie razem z załącznikiem), `.txt` z treścią i zdjęcie inspiracji. Na serwerze z prawdziwą domeną wysyła zwykły e-mail (przełącznik `SAVE_TO_FILE` na górze `send.php`). Folder `_outbox/` nie wgrywaj na serwer.
+
 ## Struktura
 
 - `css/style.css` – style (czcionki Nunito i Fraunces hostowane lokalnie w `fonts/`)

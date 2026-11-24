@@ -1,0 +1,22 @@
+# Testowe wiadomości z formularza (tryb lokalny send.php)
+_outbox/
+
+# Pliki systemowe
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Edytory
+.vscode/
+.idea/
+*.swp
+
+# Sekrety i lokalna konfiguracja
+.env
+.env.*
+php.ini
+
+# Logi i kopie zapasowe
+*.log
+*.bak
+*.zip
