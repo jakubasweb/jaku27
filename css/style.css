@@ -4,8 +4,8 @@
    ========================================================================== */
 
 /* ---------- Czcionki (latin + latin-ext = pełne polskie znaki) ---------- */
-@font-face{font-family:'Fraunces';font-style:normal;font-weight:500 700;font-display:swap;src:url(../fonts/fraunces-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
-@font-face{font-family:'Fraunces';font-style:normal;font-weight:500 700;font-display:swap;src:url(../fonts/fraunces-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Lora';font-style:normal;font-weight:500 700;font-display:swap;src:url(../fonts/lora-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Lora';font-style:normal;font-weight:500 700;font-display:swap;src:url(../fonts/lora-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Nunito';font-style:normal;font-weight:400 800;font-display:swap;src:url(../fonts/nunito-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:'Nunito';font-style:normal;font-weight:400 800;font-display:swap;src:url(../fonts/nunito-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 
@@ -32,7 +32,7 @@
   --shadow:0 12px 40px rgba(60,40,110,.12);
   --shadow-lg:0 24px 70px rgba(60,40,110,.18);
   --font-body:'Nunito',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
-  --font-head:'Fraunces',Georgia,'Times New Roman',serif;
+  --font-head:'Lora',Georgia,'Times New Roman',serif;
   --header-h:76px;
 }
 
@@ -129,7 +129,7 @@ button{cursor:pointer}
 .hero__inner{padding-block:2rem clamp(3.5rem,6vw,5rem)}
 .hero__card{max-width:580px;background:rgba(255,255,255,.8);-webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2);border:1px solid rgba(255,255,255,.9);border-radius:var(--r-lg);padding:clamp(1.4rem,2.6vw,2.2rem);box-shadow:var(--shadow-lg)}
 .eyebrow{display:inline-flex;align-items:center;gap:.5rem;margin:0 0 1rem;padding:.4rem 1rem .4rem .75rem;border-radius:999px;background:var(--lilac);color:var(--purple-d);font-size:.85rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
-.eyebrow .icon{width:1.1em;height:1.1em;color:var(--pink)}
+.eyebrow .icon{flex:none;width:1.9rem;height:1.9rem;padding:.4rem;border-radius:50%;background:#fff;color:var(--purple);box-shadow:var(--shadow-sm)}
 .hero h1{font-size:clamp(2rem,3.9vw,3.2rem);margin-bottom:.4em}
 .hero h1 span{display:block;color:var(--purple);font-size:.66em;font-weight:600;margin-top:.2em}
 .hero__lead{font-size:clamp(1rem,1.4vw,1.15rem);color:var(--ink-soft);max-width:34em;margin-bottom:0}
@@ -148,10 +148,10 @@ button{cursor:pointer}
 .usp__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;list-style:none;background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow);padding:.6rem}
 .usp__item{display:flex;align-items:center;gap:.9rem;padding:1rem 1.1rem}
 .usp__item+.usp__item{border-left:1px solid var(--line)}
-.usp__icon{display:grid;place-items:center;flex:none;width:52px;height:52px;border-radius:50%;background:var(--lilac);color:var(--purple)}
+.usp__item .usp__icon{display:flex;align-items:center;justify-content:center;flex:none;width:52px;height:52px;border-radius:50%;background:var(--lilac);color:var(--purple)}
 .usp__item:nth-child(2) .usp__icon{background:var(--sky);color:var(--blue-d)}
 .usp__item:nth-child(3) .usp__icon{background:var(--blush);color:var(--pink)}
-.usp__icon .icon{width:26px;height:26px}
+.usp__icon .icon{display:block;width:26px;height:26px}
 .usp__item strong{display:block;font-size:1rem;line-height:1.25}
 .usp__item span{display:block;font-size:.9rem;color:var(--ink-soft);line-height:1.35}
 @media (max-width:960px){
@@ -183,7 +183,7 @@ button{cursor:pointer}
 .occasion__body{padding:1.4rem}
 .occasion__icon{display:grid;place-items:center;width:48px;height:48px;margin-bottom:.8rem;border-radius:50%;background:rgba(255,255,255,.95);color:var(--purple)}
 .occasion h3{color:#fff;font-size:1.45rem;margin-bottom:.3em}
-.occasion p{margin:0 0 .8rem;font-size:.98rem;opacity:.95}
+.occasion p{margin:0 0 .8rem;font-size:.98rem;line-height:1.5;min-height:4.5em;opacity:.95}
 .occasion__more{display:inline-flex;align-items:center;gap:.4rem;font-weight:800;font-size:.95rem}
 .occasion__more .icon{width:1.1em;height:1.1em;transition:transform .2s}
 .occasion:hover .occasion__more .icon{transform:translateX(4px)}
@@ -216,6 +216,7 @@ button{cursor:pointer}
 .lightbox__stage img{max-width:100%;max-height:calc(100svh - 11rem);width:auto;height:auto;object-fit:contain;border-radius:var(--r-sm);box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .lightbox__bar{display:flex;align-items:center;justify-content:center;gap:1.25rem;padding:0 1.25rem 1.5rem;text-align:center}
 .lightbox__cap{margin:0;font-size:1rem;max-width:44em}
+.lightbox__count{margin:0 0 .6rem;font-size:.9rem;opacity:.75;white-space:nowrap;font-variant-numeric:tabular-nums;justify-self:center}
 .lightbox__btn{position:absolute;display:grid;place-items:center;width:52px;height:52px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;transition:background-color .2s}
 .lightbox__btn:hover{background:rgba(255,255,255,.3)}
 .lightbox__btn .icon{width:26px;height:26px}

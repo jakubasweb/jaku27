@@ -35,7 +35,7 @@ Otwórz `http://localhost:8000` i wyślij formularz. Na `localhost` `send.php` n
 
 ## Struktura
 
-- `css/style.css` – style (czcionki Nunito i Fraunces hostowane lokalnie w `fonts/`)
+- `css/style.css` – style (czcionki Nunito i Lora hostowane lokalnie w `fonts/`)
 - `js/main.js` – menu, galeria z lightboxem, walidacja i wysyłka formularza, baner cookies
 - `img/web/` – zdjęcia WebP w dwóch rozmiarach (`-sm` miniatury, `-lg` powiększenia), hero, logo, ikony, `og-image.jpg`
 - `img/icons.svg` – sprite ikon SVG

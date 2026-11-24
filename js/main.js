@@ -117,6 +117,7 @@
     var box = $('#lightbox');
     var boxImg = $('#lightbox-img');
     var boxCap = $('#lightbox-cap');
+    var boxCount = $('#lightbox-count');
     var idx = 0;
     var visible = [];
 
@@ -126,6 +127,7 @@
       boxImg.src = img.getAttribute('src').replace('-sm.', '-lg.');
       boxImg.alt = img.alt;
       boxCap.textContent = img.alt;
+      boxCount.textContent = (idx + 1) + ' / ' + visible.length;
       var nxt = new Image();
       nxt.src = $('img', visible[(idx + 1) % visible.length]).getAttribute('src').replace('-sm.', '-lg.');
     };

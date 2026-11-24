@@ -28,7 +28,7 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preload" href="fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/lora-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" type="image/webp" href="img/web/hero-1600.webp" imagesrcset="img/web/hero-480.webp 480w, img/web/hero-800.webp 800w, img/web/hero-1200.webp 1200w, img/web/hero-1600.webp 1600w, img/web/hero-1920.webp 1920w" imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css">
 
@@ -147,19 +147,19 @@
       <div class="container">
         <ul class="usp__grid">
           <li class="usp__item">
-            <span class="usp__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-clock"/></svg></span>
+            <span class="usp__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-usp-quote"/></svg></span>
             <div><strong>Wycena w 24 godziny</strong><span>Bezpłatnie i bez zobowiązań</span></div>
           </li>
           <li class="usp__item">
-            <span class="usp__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-palette"/></svg></span>
+            <span class="usp__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-usp-custom"/></svg></span>
             <div><strong>Projekt na miarę</strong><span>Kolory dobrane do okazji</span></div>
           </li>
           <li class="usp__item">
-            <span class="usp__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-truck"/></svg></span>
+            <span class="usp__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-usp-delivery"/></svg></span>
             <div><strong>Dojazd i montaż</strong><span>Na sali lub w Twoim domu</span></div>
           </li>
           <li class="usp__item">
-            <span class="usp__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-pin"/></svg></span>
+            <span class="usp__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-usp-location"/></svg></span>
             <div><strong>Tarnobrzeg i okolice</strong><span>Lokalnie, z sercem</span></div>
           </li>
         </ul>
@@ -290,7 +290,7 @@
     <dialog class="lightbox" id="lightbox" aria-label="Podgląd zdjęcia">
       <button type="button" class="lightbox__btn lightbox__close" aria-label="Zamknij podgląd"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-close"/></svg></button>
       <button type="button" class="lightbox__btn lightbox__prev" aria-label="Poprzednie zdjęcie"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-arrow-left"/></svg></button>
-      <div class="lightbox__stage"><img id="lightbox-img" src="" alt=""></div>
+      <div class="lightbox__stage"><p class="lightbox__count" id="lightbox-count"></p><img id="lightbox-img" src="" alt=""></div>
       <div class="lightbox__bar"><p class="lightbox__cap" id="lightbox-cap" aria-live="polite"></p></div>
       <button type="button" class="lightbox__btn lightbox__next" aria-label="Następne zdjęcie"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-arrow"/></svg></button>
     </dialog>
@@ -318,7 +318,7 @@
           </li>
           <li class="price price--featured">
             <span class="price__badge">Polecana</span>
-            <span class="price__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-balloon"/></svg></span>
+            <span class="price__icon"><svg class="icon" aria-hidden="true" focusable="false">            <use href="img/icons.svg#i-garland"/></svg></span>
             <h3>Girlanda z balonów</h3>
             <p class="price__amount"><small>od</small><strong>450 zł</strong></p>
             <ul class="price__list">
